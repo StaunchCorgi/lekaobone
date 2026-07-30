@@ -1,0 +1,73 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+import "../style/services.css"
+
+const services = [
+  {
+    icon: "🌐",
+    title: "Website Design & Development",
+    description:
+      "Modern, responsive websites built to establish credibility, generate leads and grow your business."
+  },
+  {
+    icon: "🎨",
+    title: "Branding & Graphic Design",
+    description:
+      "Logos, brand identities, social media graphics, marketing material and visual assets that strengthen your brand."
+  },
+  {
+    icon: "🛒",
+    title: "E-commerce Solutions",
+    description:
+      "Sell products online with secure, easy-to-manage e-commerce stores designed for growth."
+  },
+   {
+    icon: "🛠️",
+    title: "Website Care & Maintenance",
+    description:
+      "Keep your website secure, fast and up-to-date with ongoing maintenance, monitoring and support."
+  },
+  {
+    icon: "🤖",
+    title: "AI Automation & Integration",
+    description:
+      "Automate repetitive tasks, streamline operations and integrate AI into your daily business processes."
+  },
+  {
+    icon: "📈",
+    title: "SEO & Digital Marketing",
+    description:
+      "Improve your online visibility through technical SEO, local SEO and digital marketing strategies."
+  },
+
+];
+---
+
+<section class="services section" id="services">
+
+    <div class="container">
+
+        <span class="section-tag">
+            Our Services
+        </span>
+
+        <h2 class="section-title">
+            Everything you need to
+            <span>grow your business.</span>
+        </h2>
+
+        <p class="section-description">
+            We combine design, development and AI to create digital
+            experiences that help businesses attract customers,
+            improve operations and scale with confidence.
+        </p>
+
+        <div class="services__grid">
+            {services.map(service => (
+                <ServiceCard {...service} />
+            ))}
+        </div>
+
+    </div>
+
+</section>

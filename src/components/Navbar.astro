@@ -1,0 +1,39 @@
+---
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<header class="site-header">
+     <nav class="nav">
+        <a class="logo" href="/">
+            leka<span>o</span>bone
+        </a>
+            <div class="nav-links">
+                {navigation.map((item) => (
+                    <a href={item.href}>{item.name}</a>     
+                ))}
+            </div>
+               <a href="https://wa.me/27679537768" class="nav-cta">WhatsApp</a>
+        </nav>
+</header>
+
+
+
+
+
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');   
+        
+        menuToggle?.addEventListener('click', () => {
+        navLinks?.classList.toggle('active');
+        
+        });
+
+    </script>

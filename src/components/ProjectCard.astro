@@ -1,0 +1,44 @@
+<!-- ---
+const {
+    title,
+    category,
+    description,
+    image,
+    technologies = [],
+    href
+} = Astro.props;
+---
+
+<a class="project-card" href={href}>
+
+    <div class="project-card__image">
+        <img src={image} alt={title} loading="lazy" />
+    </div>
+
+    <div class="project-card__content">
+
+        <span class="project-card__category">
+            {category}
+        </span>
+
+        <h3>{title}</h3>
+
+        <p>{description}</p>
+
+        <div class="project-card__tech">
+
+            {
+                technologies.map((tech) => (
+                    <span>{tech}</span>
+                ))
+            }
+
+        </div>
+
+        <span class="project-card__link">
+            View Project →
+        </span>
+
+    </div>
+
+</a> -->

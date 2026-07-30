@@ -1,0 +1,48 @@
+---
+const features = [
+  {
+    title: "Who we help",
+    description:
+      "SMEs, service businesses, construction companies, startups and local brands ready to grow online.",
+    icon: "👥"
+  },
+  {
+    title: "Problem we solve",
+    description:
+      "Poor online presence, missed leads, manual admin and outdated business processes.",
+    icon: "⚡"
+  },
+  {
+    title: "What we build",
+    description:
+      "Websites, landing pages, eCommerce stores, dashboards, portals, CRMs and AI-powered tools.",
+    icon: "💻"
+  },
+  {
+    title: "Let's talk",
+    description:
+      "Book a free strategy call and discover how digital solutions can grow your business.",
+    icon: "💬"
+  }
+];
+---
+
+<section class="feature-cards">
+    <div class="feature-cards__grid">
+        {features.map((feature) => (
+            <article class="feature-card">
+                <span class="feature-card__icon">
+                    {feature.icon}
+                </span>
+
+                <h3 class="feature-card__title">
+                    {feature.title}
+                </h3>
+
+                <p class="feature-card__description">
+                    {feature.description}
+                </p>
+            </article>
+        ))}
+    </div>
+</section>

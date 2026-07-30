@@ -1,0 +1,39 @@
+---
+interface Props {
+  primaryText?: string;
+  primaryHref?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+}
+
+const {
+  primaryText = "Start Your Project",
+  primaryHref = "/contact",
+
+  secondaryText = "Explore Our Solutions",
+  secondaryHref = "/portfolio"
+} = Astro.props;
+---
+
+<div class="hero-buttons">
+
+    <a
+        href={primaryHref}
+        class="btn btn--primary"
+    >
+        {primaryText}
+
+        <span class="btn__arrow">
+            →
+        </span>
+
+    </a>
+
+    <a
+        href={secondaryHref}
+        class="btn btn--secondary"
+    >
+        {secondaryText}
+    </a>
+
+</div>

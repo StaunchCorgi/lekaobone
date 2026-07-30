@@ -1,0 +1,29 @@
+---
+interface Props{
+    items?:string[] 
+}
+
+const{
+    items = ["Websites", "Software","AI Automation"]
+} =Astro.props  
+---
+<p class="hero-badge" aria-label={items.join(", ")}>
+  {
+    items.map((item, index) => (
+      <>
+        <span class="hero-badge__item">
+          {item}
+        </span>
+
+        {index < items.length - 1 && (
+          <span
+            class="hero-badge__separator"
+            aria-hidden="true"
+          >
+            •
+          </span>
+        )}
+      </>
+    ))
+  }
+</p>

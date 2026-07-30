@@ -1,0 +1,13 @@
+---
+interface Props {
+  text?: string;
+}
+
+const {
+  text = "We build modern websites, business software, and AI automation that help service businesses attract more customers and operate more efficiently."
+} = Astro.props;
+---
+
+<p class="hero-description">
+  {text}
+</p>

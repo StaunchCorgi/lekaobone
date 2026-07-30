@@ -1,0 +1,640 @@
+:root {
+    --color-text-secondary: rgba(255, 255, 255, .75);
+}
+
+/* ===================================
+HERO LAYOUT
+=================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 3.5rem 2rem 4.5rem;
+}
+
+.hero__container {
+    width: 100%;
+    max-width: 1320px;
+    min-height: 620px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(440px, .95fr);
+    align-items: center;
+    gap: 4rem;
+
+    position: relative;
+}
+
+.hero__background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero__left {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 680px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.hero__right {
+    position: relative;
+
+    width: 100%;
+    min-height: 560px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===================================
+HERO BADGE
+=================================== */
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: .6rem;
+
+    margin-bottom: 2rem;
+
+    color: var(--color-text);
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+
+    user-select: none;
+}
+
+.hero-badge__item {
+    white-space: nowrap;
+
+    opacity: 0;
+    transform: translateY(8px);
+
+    animation: badgeReveal .5s forwards;
+}
+
+.hero-badge__separator {
+    opacity: .5;
+}
+
+.hero-badge__item:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.hero-badge__item:nth-child(3) {
+    animation-delay: .2s;
+}
+
+.hero-badge__item:nth-child(5) {
+    animation-delay: .3s;
+}
+
+@keyframes badgeReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================
+HERO HEADING
+=================================== */
+
+.hero-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 0 0 1.75rem;
+
+    color: white;
+    font-size: clamp(3.6rem, 5.8vw, 5.8rem);
+    font-weight: 800;
+    line-height: .98;
+    letter-spacing: -.055em;
+}
+
+.hero-heading__line {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: .35rem;
+}
+
+.hero-heading__word,
+.hero-heading__highlight {
+    display: inline-block;
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    animation: heroWord .7s forwards;
+}
+
+.hero-heading__word {
+    color: white;
+}
+
+.hero-heading__highlight {
+    color: var(--color-primary);
+}
+
+@keyframes heroWord {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================
+DESCRIPTION + BUTTONS
+=================================== */
+
+.hero-description {
+    width: 100%;
+    max-width: 590px;
+
+    margin: 0 0 2.5rem;
+
+    color: var(--color-text-secondary);
+    font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+    line-height: 1.75;
+    text-align: left;
+    text-wrap: balance;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+
+    padding: 1rem 1.8rem;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: .3s ease;
+}
+
+.btn--primary {
+    background: var(--color-primary);
+    color: #08131d;
+}
+
+.btn--primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 230, 190, .35);
+}
+
+.btn__arrow {
+    transition: transform .25s;
+}
+
+.btn--primary:hover .btn__arrow {
+    transform: translateX(5px);
+}
+
+.btn--secondary {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .04);
+    backdrop-filter: blur(8px);
+}
+
+.btn--secondary:hover {
+    background: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .4);
+}
+
+/* ===================================
+ORBIT GRAPHIC
+=================================== */
+
+.hero-graphic {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+/* Large outer dotted orbit */
+
+.ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: min(540px, 94%);
+    aspect-ratio: 1;
+
+    border: 1px dashed rgba(24, 229, 197, .72);
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+    animation: orbitRotate 40s linear infinite;
+
+    filter: drop-shadow(0 0 12px rgba(24, 229, 197, .08));
+}
+
+/* Horizontal orbit crossing the centre */
+
+.ring::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 145%;
+    height: 34%;
+
+    border: 1px solid rgba(24, 229, 197, .4);
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%) rotate(4deg);
+}
+
+/* Central glowing node */
+
+.center-node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 280px;
+    height: 280px;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(24, 229, 197, .75);
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(24, 229, 197, .16),
+            rgba(12, 28, 43, .72) 52%,
+            rgba(8, 17, 31, .84) 100%
+        );
+
+    color: white;
+    font-weight: 700;
+    letter-spacing: .2em;
+    line-height: 1.55;
+    text-align: center;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        inset 0 0 44px rgba(24, 229, 197, .07),
+        0 0 55px rgba(24, 229, 197, .07);
+}
+
+/* Glowing orbit points */
+
+.orb {
+    position: absolute;
+
+    width: 19px;
+    height: 19px;
+
+    border-radius: 50%;
+
+    background: #18e5c5;
+
+    box-shadow:
+        0 0 10px rgba(24, 229, 197, .95),
+        0 0 28px rgba(24, 229, 197, .65);
+
+    z-index: 3;
+}
+
+.orb::after {
+    content: "";
+
+    position: absolute;
+    inset: -8px;
+
+    border-radius: inherit;
+
+    background: rgba(24, 229, 197, .12);
+    filter: blur(7px);
+}
+
+/* Place points around the large circular orbit */
+
+.orb--1 {
+    left: 22%;
+    top: 16%;
+
+    animation: float 5s ease-in-out infinite;
+}
+
+.orb--2 {
+    right: 8%;
+    top: 27%;
+
+    animation: float 7s ease-in-out infinite;
+}
+
+.orb--3 {
+    right: 17%;
+    bottom: 13%;
+
+    animation: float 6s ease-in-out infinite;
+}
+
+.orb--4 {
+    left: 13%;
+    bottom: 22%;
+
+    animation: float 8s ease-in-out infinite;
+}
+
+/* Optional subtle decorative lines */
+
+.line {
+    position: absolute;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(24, 229, 197, .25),
+        transparent
+    );
+}
+
+.line--1 {
+    right: 0;
+    top: 33%;
+
+    width: 140px;
+}
+
+.line--2 {
+    left: 2%;
+    bottom: 31%;
+
+    width: 120px;
+
+    transform: rotate(-28deg);
+}
+
+/* ===================================
+ANIMATIONS
+=================================== */
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes orbitRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* ===================================
+FEATURE CARDS
+=================================== */
+
+.feature-cards {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 0;
+    padding: 0 0 4.5rem;
+}
+
+.feature-cards__grid {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 2rem;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, .04);
+    backdrop-filter: blur(18px);
+
+    transition: .35s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(24, 229, 197, .35);
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+}
+
+.feature-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(24, 229, 197, .08),
+            transparent 60%
+        );
+
+    opacity: 0;
+
+    transition: .35s;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card__icon {
+    width: 56px;
+    height: 56px;
+
+    margin-bottom: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: rgba(24, 229, 197, .12);
+
+    font-size: 1.4rem;
+}
+
+.feature-card__title {
+    margin-bottom: 1rem;
+
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.feature-card__description {
+    color: rgba(255, 255, 255, .72);
+    line-height: 1.8;
+}
+
+/* ===================================
+RESPONSIVE
+=================================== */
+
+@media (max-width: 1100px) {
+    .hero__container {
+        grid-template-columns: minmax(0, 1fr) minmax(380px, .85fr);
+        gap: 2rem;
+    }
+
+    .ring {
+        width: min(460px, 94%);
+    }
+
+    .center-node {
+        width: 245px;
+        height: 245px;
+    }
+
+    .feature-cards__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .hero {
+        padding: 4rem 1.25rem;
+    }
+
+    .hero__container {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .hero__left {
+        max-width: 760px;
+        margin: 0 auto;
+
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-heading {
+        align-items: center;
+    }
+
+    .hero-heading__line {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero__right,
+    .hero-graphic {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 3.5rem 1rem;
+    }
+
+    .hero-heading {
+        font-size: clamp(3rem, 14vw, 4.3rem);
+    }
+
+    .hero-badge {
+        justify-content: center;
+        letter-spacing: .16em;
+    }
+
+    .hero-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 340px;
+    }
+
+    .feature-cards__grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+}

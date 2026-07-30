@@ -1,0 +1,36 @@
+---
+interface Props {
+  lineOne?: string[];
+  lineTwo?: string[];
+  highlight?: string;
+}
+
+const {
+  lineOne = ["Digital", "solutions", "that"],
+  lineTwo = ["your", "business."],
+  highlight = "grow"
+} = Astro.props;
+---
+<h1 class="hero-heading">
+
+  <span class="hero-heading__line">
+    {lineOne.map((word) => (
+      <span class="hero-heading__word">
+        {word}
+      </span>
+    ))}
+
+    <span class="hero-heading__highlight">
+      {highlight}
+    </span>
+  </span>
+
+  <span class="hero-heading__line">
+    {lineTwo.map((word) => (
+      <span class="hero-heading__word">
+        {word}
+      </span>
+    ))}
+  </span>
+
+</h1>

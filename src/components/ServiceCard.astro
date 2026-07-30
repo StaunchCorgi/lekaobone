@@ -1,0 +1,46 @@
+---
+interface Props {
+    icon: string;
+    title: string;
+    description: string;
+    href?: string;
+}
+
+const {
+    icon,
+    title,
+    description,
+    href = "/contact"
+} = Astro.props;
+---
+
+<article class="service-card">
+
+    <div class="service-card__glow"></div>
+
+    <div class="service-card__icon" aria-hidden="true">
+        {icon}
+    </div>
+
+    <div class="service-card__content">
+
+        <h3 class="service-card__title">
+            {title}
+        </h3>
+
+        <p class="service-card__description">
+            {description}
+        </p>
+
+    </div>
+
+    <a
+        href={href}
+        class="service-card__link"
+        aria-label={`Learn more about ${title}`}
+    >
+        <span>Learn more</span>
+        <span class="service-card__arrow">→</span>
+    </a>
+
+</article>
