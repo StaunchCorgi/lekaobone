@@ -1,10 +1,14 @@
 ---
 import '../style/hero.css';
+import '../style/about.css';
+import '../style/portfolio.css';
 import Hero from '../components/Hero/Hero.astro';
 import FeatureSection from '../components/FeatureSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Portfolio from '../components/Portfolio.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -12,7 +16,9 @@ import Services from '../components/Services.astro';
 
 <BaseLayout title="Leka O Bone">
     <Hero/>
+    <About/>
     <Services/>
+    <Portfolio/>
 
     <ContactForm/> 
 </BaseLayout>

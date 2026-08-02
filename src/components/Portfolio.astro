@@ -1,0 +1,116 @@
+---
+const projects = [
+    {
+        title: "Market Structure Concepts",
+        category: "Educational Platform",
+        description:
+            "A responsive Astro learning platform designed to teach Smart Money Concepts through structured lessons and conversion-focused affiliate journeys.",
+        image: "/images/market-structure-concepts.png",
+        href: "/portfolio"
+    },
+    {
+        title: "Property Management System",
+        category: "Custom Business Software",
+        description:
+            "A centralised platform for managing properties, tenants, rental income, expenses and lease documents.",
+        image: "/images/property-system.png",
+        href: "/portfolio"
+    },
+    {
+        title: "Christy Sims Speaker Concept",
+        category: "Speaker Website",
+        description:
+            "A premium keynote speaker concept focused on storytelling, credibility, media exposure and qualified booking enquiries.",
+        image: "/images/christy-sims-concept.png",
+        href: "/portfolio"
+    }
+];
+---
+
+<section class="portfolio-section" id="portfolio">
+
+    <div class="container">
+
+        <header class="portfolio-section__header">
+
+            <div>
+
+                <span class="portfolio-section__eyebrow">
+                    Selected Work
+                </span>
+
+                <h2>
+                    Digital products designed to
+                    <span>solve real problems.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                Explore a selection of websites, systems and digital concepts
+                created to improve visibility, streamline operations and help
+                businesses grow.
+            </p>
+
+        </header>
+
+        <div class="portfolio-section__grid">
+
+            {projects.map((project) => (
+
+                <a
+                    href={project.href}
+                    class="portfolio-card"
+                >
+
+                    <div class="portfolio-card__image">
+
+                        <img
+                            src={project.image}
+                            alt={project.title}
+                            loading="lazy"
+                        />
+
+                    </div>
+
+                    <div class="portfolio-card__content">
+
+                        <span class="portfolio-card__category">
+                            {project.category}
+                        </span>
+
+                        <h3>
+                            {project.title}
+                        </h3>
+
+                        <p>
+                            {project.description}
+                        </p>
+
+                        <div class="portfolio-card__link">
+
+                            <span>View project</span>
+                            <span aria-hidden="true">↗</span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            ))}
+
+        </div>
+
+        <div class="portfolio-section__footer">
+
+            <a href="/portfolio" class="portfolio-section__button">
+                View All Projects
+                <span aria-hidden="true">→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

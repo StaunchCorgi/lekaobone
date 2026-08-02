@@ -1,0 +1,252 @@
+/* ===================================
+   ABOUT
+=================================== */
+
+.about-section {
+    position: relative;
+    padding: 8rem 0;
+
+    background: #f4f1ea;
+    color: #16151b;
+}
+
+.about-section .container {
+    width: min(1200px, calc(100% - 3rem));
+    margin-inline: auto;
+}
+
+.about-section__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: start;
+}
+
+.about-section__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .8rem;
+
+    margin-bottom: 1.5rem;
+
+    color: #087f72;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+
+.about-section__eyebrow::before {
+    content: "";
+
+    width: 38px;
+    height: 2px;
+
+    background: #0cb8a4;
+}
+
+.about-section__heading h2 {
+    max-width: 720px;
+    margin: 0;
+
+    color: #17161c;
+    font-size: clamp(3rem, 5.3vw, 5.4rem);
+    font-weight: 750;
+    line-height: .98;
+    letter-spacing: -.055em;
+}
+
+.about-section__heading h2 span {
+    color: #0a9d8c;
+}
+
+.about-section__introduction {
+    padding-top: 3.8rem;
+}
+
+.about-section__introduction p {
+    margin: 0 0 1.25rem;
+
+    color: #615e64;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.about-section__introduction .about-section__lead {
+    color: #29272d;
+    font-size: 1.15rem;
+    font-weight: 550;
+}
+
+.about-section__link {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+
+    margin-top: .75rem;
+    padding-bottom: .25rem;
+
+    border-bottom: 1px solid #0a9d8c;
+
+    color: #087f72;
+    font-weight: 750;
+    text-decoration: none;
+
+    transition:
+        gap .25s ease,
+        color .25s ease;
+}
+
+.about-section__link:hover {
+    gap: 1rem;
+    color: #075e56;
+}
+
+/* Values */
+
+.about-section__values {
+    margin-top: 6rem;
+    padding-top: 2.5rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+
+    border-top: 1px solid rgba(22, 21, 27, .16);
+    border-bottom: 1px solid rgba(22, 21, 27, .16);
+}
+
+.about-value {
+    min-height: 260px;
+    padding: 1rem 2.5rem 2.5rem;
+
+    border-right: 1px solid rgba(22, 21, 27, .14);
+}
+
+.about-value:first-child {
+    padding-left: 0;
+}
+
+.about-value:last-child {
+    padding-right: 0;
+    border-right: 0;
+}
+
+.about-value__number {
+    display: block;
+    margin-bottom: 2.5rem;
+
+    color: #0a9d8c;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: .15em;
+}
+
+.about-value h3 {
+    max-width: 280px;
+    margin: 0 0 1rem;
+
+    color: #1a191f;
+    font-size: 1.35rem;
+    line-height: 1.25;
+}
+
+.about-value p {
+    max-width: 320px;
+    margin: 0;
+
+    color: #6c686f;
+    line-height: 1.75;
+}
+
+/* Mission banner */
+
+.about-section__mission {
+    margin-top: 4rem;
+    padding: 2rem 0;
+
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: start;
+    gap: 2rem;
+}
+
+.about-section__mission-label {
+    color: #0a9d8c;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.about-section__mission p {
+    max-width: 820px;
+    margin: 0;
+
+    color: #28262c;
+    font-size: clamp(1.35rem, 2.3vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -.025em;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .about-section {
+        padding: 6rem 0;
+    }
+
+    .about-section__top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-section__introduction {
+        max-width: 680px;
+        padding-top: 0;
+    }
+
+    .about-section__values {
+        grid-template-columns: 1fr;
+    }
+
+    .about-value {
+        min-height: auto;
+        padding: 2rem 0;
+
+        border-right: 0;
+        border-bottom: 1px solid rgba(22, 21, 27, .14);
+    }
+
+    .about-value:last-child {
+        border-bottom: 0;
+    }
+
+    .about-value__number {
+        margin-bottom: 1.25rem;
+    }
+
+    .about-section__mission {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-section {
+        padding: 5rem 0;
+    }
+
+    .about-section .container {
+        width: min(100% - 2rem, 1200px);
+    }
+
+    .about-section__heading h2 {
+        font-size: clamp(2.8rem, 14vw, 4rem);
+    }
+
+    .about-section__values {
+        margin-top: 4rem;
+    }
+}
