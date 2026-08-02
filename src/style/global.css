@@ -448,6 +448,9 @@ footer .logo {
 
     padding:2rem;
 }
+.contact__info h3,.contact__info p {
+    color:var(--color-primary);
+}
 
 .contact form{
     display:grid;
