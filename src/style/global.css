@@ -651,3 +651,9 @@ grid-template-columns:1fr;
 
     transform:translateX(6px);
 }
+.form-honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+}
