@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection(
+    "blog",
+    ({ data }) => !data.draft
+  );
+
+  return posts.map((post) => ({
+    params: {
+      id: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const body = post.body ?? "";
+
+const words = body
+  .trim()
+  .split(/\s+/)
+  .filter(Boolean).length;
+
+const readingTime = Math.max(1, Math.ceil(words / 220));
+
+const canonicalURL =
+  post.data.canonicalURL ??
+  new URL(`/blog/${post.id}/`, Astro.site).toString();
+---
+
+<BlogLayout
+  {...post.data}
+  canonicalURL={canonicalURL}
+  readingTime={readingTime}
+>
+  <Content />
+</BlogLayout>

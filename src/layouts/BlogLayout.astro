@@ -1,0 +1,362 @@
+---
+import SEO from "../components/SEO.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+
+interface Props {
+  title: string;
+  seoTitle: string;
+  description: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  author: string;
+  category: string;
+  tags: string[];
+  image: string;
+  imageAlt: string;
+  canonicalURL: string;
+  readingTime: number;
+}
+
+const {
+  title,
+  seoTitle,
+  description,
+  publishDate,
+  updatedDate,
+  author,
+  category,
+  tags,
+  image,
+  imageAlt,
+  canonicalURL,
+  readingTime,
+} = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  image: new URL(image, Astro.site).toString(),
+  datePublished: publishDate.toISOString(),
+  dateModified: (updatedDate ?? publishDate).toISOString(),
+  author: {
+    "@type": "Organization",
+    name: author,
+    url: new URL("/", Astro.site).toString(),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Leka O Bone",
+    url: new URL("/", Astro.site).toString(),
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonicalURL,
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <SEO
+      title={seoTitle}
+      description={description}
+      canonicalURL={canonicalURL}
+      image={image}
+      imageAlt={imageAlt}
+      type="article"
+      publishDate={publishDate}
+      updatedDate={updatedDate}
+      author={author}
+      schema={schema}
+    />
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <article class="article">
+        <header class="article-hero">
+          <div class="article-hero__inner">
+            <a class="article-category" href="/blog">
+              {category}
+            </a>
+
+            <h1>{title}</h1>
+
+            <p class="article-description">
+              {description}
+            </p>
+
+            <div class="article-meta">
+              <span>{author}</span>
+              <span aria-hidden="true">•</span>
+
+              <time datetime={publishDate.toISOString()}>
+                {publishDate.toLocaleDateString("en-ZA", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </time>
+
+              <span aria-hidden="true">•</span>
+              <span>{readingTime} min read</span>
+            </div>
+          </div>
+        </header>
+
+        <figure class="article-image">
+          <img
+            src={image}
+            alt={imageAlt}
+            width="1200"
+            height="630"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </figure>
+
+        <div class="article-layout">
+          <aside class="article-sidebar">
+            <p class="sidebar-title">Topics</p>
+
+            <div class="article-tags">
+              {tags.map((tag) => <span>{tag}</span>)}
+            </div>
+          </aside>
+
+          <div class="article-content">
+            <slot />
+
+            <section class="article-cta">
+              <span class="article-cta__eyebrow">
+                Build a stronger online presence
+              </span>
+
+              <h2>
+                Create a website that reflects your practice.
+              </h2>
+
+              <p>
+                Leka O Bone creates thoughtful, inclusive websites
+                for professionals who want to build trust and connect
+                with the right audience.
+              </p>
+
+              <a href="/contact" class="article-cta__button">
+                Start a conversation
+              </a>
+            </section>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .article {
+    background: #fff;
+    color: #202124;
+  }
+
+  .article-hero {
+    padding: 8rem 1.5rem 4rem;
+    background:
+      radial-gradient(
+        circle at top right,
+        rgba(139, 92, 246, 0.15),
+        transparent 38%
+      ),
+      #f8f7fc;
+  }
+
+  .article-hero__inner {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .article-category {
+    display: inline-flex;
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .article-hero h1 {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: clamp(2.4rem, 6vw, 4.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+  }
+
+  .article-description {
+    max-width: 720px;
+    margin: 1.5rem auto 0;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.7;
+    color: #5f6368;
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.75rem;
+    color: #6b7280;
+    font-size: 0.95rem;
+  }
+
+  .article-image {
+    width: min(1180px, calc(100% - 3rem));
+    margin: -1.5rem auto 0;
+  }
+
+  .article-image img {
+    width: 100%;
+    aspect-ratio: 1200 / 630;
+    display: block;
+    object-fit: cover;
+    border-radius: 1.5rem;
+  }
+
+  .article-layout {
+    width: min(1120px, calc(100% - 3rem));
+    margin: 4rem auto 0;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 760px);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .article-sidebar {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .sidebar-title {
+    margin: 0 0 1rem;
+    font-weight: 700;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .article-tags span {
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    background: #f2effa;
+    font-size: 0.8rem;
+  }
+
+  .article-content {
+    min-width: 0;
+    padding-bottom: 6rem;
+    font-size: 1.08rem;
+    line-height: 1.85;
+  }
+
+  .article-content :global(h2) {
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .article-content :global(h3) {
+    margin-top: 2.25rem;
+    font-size: 1.35rem;
+  }
+
+  .article-content :global(p) {
+    margin: 1.25rem 0;
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    padding-left: 1.5rem;
+  }
+
+  .article-content :global(li) {
+    margin-bottom: 0.65rem;
+  }
+
+  .article-content :global(a) {
+    font-weight: 600;
+    text-underline-offset: 0.2em;
+  }
+
+  .article-cta {
+    margin-top: 4rem;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    border-radius: 1.5rem;
+    background: #17131f;
+    color: #fff;
+  }
+
+  .article-cta__eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .article-cta h2 {
+    margin-top: 0.75rem;
+  }
+
+  .article-cta p {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .article-cta__button {
+    display: inline-flex;
+    margin-top: 1rem;
+    padding: 0.85rem 1.2rem;
+    border-radius: 999px;
+    background: #fff;
+    color: #17131f;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  @media (max-width: 800px) {
+    .article-hero {
+      padding-top: 6.5rem;
+    }
+
+    .article-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .article-sidebar {
+      position: static;
+    }
+  }
+</style>

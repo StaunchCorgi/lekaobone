@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL: string;
+  image?: string;
+  imageAlt?: string;
+  type?: "website" | "article";
+  publishDate?: Date;
+  updatedDate?: Date;
+  author?: string;
+  schema?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  canonicalURL,
+  image = "/images/og-default.webp",
+  imageAlt = "Leka O Bone digital solutions",
+  type = "website",
+  publishDate,
+  updatedDate,
+  author = "Leka O Bone",
+  schema,
+} = Astro.props;
+
+const absoluteImage = new URL(image, Astro.site).toString();
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={absoluteImage} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content="Leka O Bone" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImage} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+{type === "article" && publishDate && (
+  <meta
+    property="article:published_time"
+    content={publishDate.toISOString()}
+  />
+)}
+
+{type === "article" && updatedDate && (
+  <meta
+    property="article:modified_time"
+    content={updatedDate.toISOString()}
+  />
+)}
+
+{type === "article" && (
+  <meta property="article:author" content={author} />
+)}
+
+{schema && (
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+  />
+)}
