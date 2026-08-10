@@ -1,106 +1,126 @@
 ---
 const projects = [
     {
-        title: "Market Structure Concepts",
-        category: "Educational Platform",
+        title: "Private Practice Website",
+        category: "Healthcare Website",
         description:
-            "A responsive Astro learning platform designed to teach Smart Money Concepts through structured lessons and conversion-focused affiliate journeys.",
-        image: "/images/market-structure-concepts.png",
-        href: "https://marketstructureconcepts.pages.dev/"
+            "A modern, mobile-friendly website concept designed to help a private healthcare practice build trust, explain services clearly and generate more patient enquiries.",
+        image: "/images/healthcare-practice.png",
+        href: "/portfolio/private-practice"
     },
     {
-        title: "Property Management System",
-        category: "Custom Business Software",
+        title: "Patient Booking Experience",
+        category: "Patient Experience",
         description:
-            "A centralised platform for managing properties, tenants, rental income, expenses and lease documents.",
-        image: "/images/real-estate.png",
-        href: "/portfolio"
+            "A simplified online appointment journey that helps patients request bookings while reducing repetitive calls and reception administration.",
+        image: "/images/patient-booking.png",
+        href: "/portfolio/patient-booking"
     },
     {
-        title: "Christy Sims Speaker Concept",
-        category: "Speaker Website",
+        title: "Medical Reception Dashboard",
+        category: "Practice Management",
         description:
-            "A premium keynote speaker concept focused on storytelling, credibility, media exposure and qualified booking enquiries.",
-        image: "/images/christy-sims-concept.png",
-        href: "https://courageouschristy.pages.dev/"
+            "A receptionist-first dashboard concept for managing appointments, patient intake and everyday practice workflows from one place.",
+        image: "/images/reception-dashboard.png",
+        href: "/portfolio/reception-dashboard"
+    },
+    {
+        title: "Therapist Website Concept",
+        category: "Mental Health",
+        description:
+            "A conversion-focused therapist website designed to improve professional credibility, local search visibility and patient enquiries.",
+        image: "/images/therapist-concept.png",
+        href: "/portfolio/therapist"
+    },
+    {
+        title: "Appointment Reminder Automation",
+        category: "Healthcare Automation",
+        description:
+            "An automated reminder workflow designed to support appointment confirmations, follow-ups and reduced administrative workload.",
+        image: "/images/appointment-automation.png",
+        href: "/portfolio/appointment-automation"
+    },
+    {
+        title: "Cash Patient Discovery Platform",
+        category: "Healthcare Platform Concept",
+        description:
+            "A digital marketplace concept connecting cash-paying patients with private healthcare providers based on location, service and availability.",
+        image: "/images/patient-discovery.png",
+        href: "/portfolio/patient-discovery"
     }
 ];
 ---
 
 <section class="portfolio-section" id="portfolio">
-
     <div class="container">
-
         <header class="portfolio-section__header">
-
             <div>
-
                 <span class="portfolio-section__eyebrow">
-                    Selected Work
+                    Healthcare Solutions & Concepts
                 </span>
 
                 <h2>
-                    Digital products designed to
-                    <span>solve real problems.</span>
+                      Digital tools built around
+                    <span>modern practice needs.</span>
                 </h2>
 
             </div>
 
             <p>
-                Explore a selection of websites, systems and digital concepts
-                created to improve visibility, streamline operations and help
-                businesses grow.
+                Explore healthcare-focused websites, patient-facing experiences
+                and practice systems designed to improve visibility, reduce
+                administration and create a better patient journey.
             </p>
 
         </header>
 
-        <div class="portfolio-section__grid">
+        <div class="portfolio-section__grid" id="portfolio">
 
-            {projects.map((project) => (
+        {projects.map((project) => (
 
-                <a
-                    href={project.href}
-                    class="portfolio-card"
-                >
+            <a
+                href={project.href}
+                class="portfolio-card"
+            >
 
-                    <div class="portfolio-card__image">
+                <div class="portfolio-card__image">
 
-                        <img
-                            src={project.image}
-                            alt={project.title}
-                            loading="lazy"
-                        />
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                    />
 
-                    </div>
+                </div>
 
-                    <div class="portfolio-card__content">
+                <div class="portfolio-card__content">
 
-                        <span class="portfolio-card__category">
-                            {project.category}
-                        </span>
+                    <span class="portfolio-card__category">
+                        {project.category}
+                    </span>
 
-                        <h3>
-                            {project.title}
-                        </h3>
+                    <h3>
+                        {project.title}
+                    </h3>
 
-                        <p>
-                            {project.description}
-                        </p>
+                    <p>
+                        {project.description}
+                    </p>
 
-                        <div class="portfolio-card__link">
+                    <div class="portfolio-card__link">
 
-                            <span>View project</span>
-                            <span aria-hidden="true">↗</span>
-
-                        </div>
+                        <span>View solution</span>
+                        <span aria-hidden="true">↗</span>
 
                     </div>
 
-                </a>
+                </div>
 
-            ))}
+            </a>
 
-        </div>
+        ))}
+
+    </div>
 
         <div class="portfolio-section__footer">
 

@@ -1,71 +1,72 @@
 ---
 import ServiceCard from "./ServiceCard.astro";
-import "../style/services.css"
+import "../style/services.css";
 
 const services = [
-  {
-    icon: "🌐",
-    title: "Website Design & Development",
-    description:
-      "Modern, responsive websites built to establish credibility, generate leads and grow your business."
-  },
-  {
-    icon: "🎨",
-    title: "Branding & Graphic Design",
-    description:
-      "Logos, brand identities, social media graphics, marketing material and visual assets that strengthen your brand."
-  },
-  {
-    icon: "🛒",
-    title: "E-commerce Solutions",
-    description:
-      "Sell products online with secure, easy-to-manage e-commerce stores designed for growth."
-  },
-   {
-    icon: "🛠️",
-    title: "Website Care & Maintenance",
-    description:
-      "Keep your website secure, fast and up-to-date with ongoing maintenance, monitoring and support."
-  },
-  {
-    icon: "🤖",
-    title: "AI Automation & Integration",
-    description:
-      "Automate repetitive tasks, streamline operations and integrate AI into your daily business processes."
-  },
-  {
-    icon: "📈",
-    title: "SEO & Digital Marketing",
-    description:
-      "Improve your online visibility through technical SEO, local SEO and digital marketing strategies."
-  },
-
+    {
+        icon: "🌐",
+        title: "Healthcare Website Design",
+        description:
+            "Professional, mobile-friendly websites that help private practices build trust, showcase their services and turn visitors into patient enquiries."
+    },
+    {
+        icon: "📅",
+        title: "Online Booking & Patient Enquiries",
+        description:
+            "Make it easier for patients to request appointments, contact your practice and find the information they need without relying entirely on phone calls."
+    },
+    {
+        icon: "⚙️",
+        title: "Practice Management Systems",
+        description:
+            "Custom software for patient administration, appointment management, internal workflows and the day-to-day needs of your practice."
+    },
+    {
+        icon: "🔔",
+        title: "Workflow & Appointment Automation",
+        description:
+            "Reduce repetitive administration with automated appointment reminders, confirmations, follow-ups and other routine practice workflows."
+    },
+    {
+        icon: "🔍",
+        title: "Local SEO & Patient Discovery",
+        description:
+            "Improve your practice's visibility on Google so patients searching for healthcare services in your area can find you more easily."
+    },
+    {
+        icon: "🛡️",
+        title: "Website Care & Support",
+        description:
+            "Keep your practice website secure, fast and up to date with ongoing maintenance, monitoring, backups and technical support."
+    }
 ];
 ---
 
-<section class="services section" id="services">
+<section class="services" id="services">
 
     <div class="container">
 
         <span class="section-tag">
-            Our Services
+            Digital Solutions for Healthcare
         </span>
 
         <h2 class="section-title">
-            Everything you need to
-            <span>grow your business.</span>
+            Technology that helps your practice
+            <span>work smarter and grow.</span>
         </h2>
 
         <p class="section-description">
-            We combine design, development and AI to create digital
-            experiences that help businesses attract customers,
-            improve operations and scale with confidence.
+            From attracting new patients to reducing repetitive
+            administration, we build digital solutions around the
+            everyday needs of private healthcare practices.
         </p>
 
         <div class="services__grid">
-            {services.map(service => (
+
+            {services.map((service) => (
                 <ServiceCard {...service} />
             ))}
+
         </div>
 
     </div>

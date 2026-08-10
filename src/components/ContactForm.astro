@@ -9,7 +9,7 @@
                 <input
                     type="hidden"
                     name="_subject"
-                    value="New Leka O Bone website enquiry"
+                    value="New Leka O Bone Healthcare Practice Enquiry"
                 />
                 <input
                     type="text"
@@ -23,19 +23,56 @@
                 <input type="text" placeholder="Your name"  name="name" />
 
                 <label>Email</label>
-                <input type="email" placeholder="you@example.com" name="email" />
+                <input type="email" placeholder="you@practice.com" name="email" />
 
-                <label>Business Name</label>
-                <input type="text" placeholder="Your business name" name="business" />
+                <label>Practice Name</label>
+                <input type="text" placeholder="Your practice name" name="practice" />
 
-                <label>What do you need?</label>
-                <select name="service">
-                    <option>Website Design & Development</option>
-                    <option>Business Software</option>
-                    <option>AI Automation</option>
-                    <option>SEO & Digital Marketing</option>
-                    <option>Website Care & Maintenance</option>
+               <label for="practice-type">Practice Type</label>
+                <select
+                    id="practice-type"
+                    name="practiceType"
+                >
+                    <option value="">Select your practice type</option>
+                    <option>General Practitioner</option>
+                    <option>Dentist</option>
+                    <option>Psychologist / Therapist</option>
+                    <option>Physiotherapist</option>
+                    <option>Specialist Practice</option>
+                    <option>Allied Health Practice</option>
+                    <option>Medical Centre</option>
+                    <option>Other</option>
+                </select>
+
+                <label for="service">How can we help?</label>
+                <select
+                    id="service"
+                    name="service"
+                    required
+                >
+                    <option value="">Select a solution</option>
+                    <option>Healthcare Website Design</option>
+                    <option>Online Booking & Patient Enquiries</option>
+                    <option>Practice Management System</option>
+                    <option>Appointment & Workflow Automation</option>
+                    <option>Local SEO & Patient Discovery</option>
+                    <option>Website Care & Support</option>
                     <option>Not Sure Yet</option>
+                </select>
+
+                <label for="challenge">What is your biggest challenge?</label>
+                <select
+                    id="challenge"
+                    name="challenge"
+                >
+                    <option value="">Select a challenge</option>
+                    <option>Not enough patient enquiries</option>
+                    <option>Too much reception or admin work</option>
+                    <option>No online booking</option>
+                    <option>Poor Google visibility</option>
+                    <option>Outdated or ineffective website</option>
+                    <option>Need a custom practice system</option>
+                    <option>Other</option>
                 </select>
 
                 <label>Estimated Budget</label>
@@ -48,11 +85,15 @@
                 </select>
 
                 <label>Message</label>
-                <textarea name="message" rows="6"
-                    placeholder="Tell us what you want to build"></textarea>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    placeholder="Tell us about your current setup, challenges and what you'd like to improve."
+                ></textarea>
 
                 <button class="btn btn--primary">
-                    Send enquiry
+                    Request a Practice Consultation
                 </button>
 
             </form>
